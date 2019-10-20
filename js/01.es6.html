@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+</body>
+</html>
+
+
+
+<script>
+    var a;
+    let b;
+    const c =[];
+    const d = {};
+    //const에 경우 선언과 동시에 할당이 필요
+
+    var a = 10;
+    function test() {
+        var a = 20;
+    }
+
+    for(var i=0; i < 10; i++) {
+
+    }
+    console.log(i);
+    
+
+
+    //ES5
+    //함수 선언문
+    //호이스팅에 대상
+    function test2() {
+        console.log();
+    }
+
+    //함수 표현식
+    //호이스팅에 대상이지만 선언만
+    const test3 = function() {
+        console.log();
+    }
+
+    //ES6 Arrow Function
+    const test4 = (str) => {
+        console.log(str);
+    }
+
+    test4("b");
+
+    // Arrow Function 축약
+    const test5 = str => str + str;
+    console.log(test5("bc"));
+    
+    const test6 = () => 1;
+    console.log( test6() );
+
+    const test7 = (str,str2) => str+str2;
+    console.log( test7(1,2) );
+
+    /* 자바스크립트 객체 */
+    //ES5
+    var jr = {
+        name : "ku",
+        age : "28",
+        job : "dev",
+        arr : ["A" ,"B", "C"],
+        address: {
+            post : "13123",
+            addr2 : "경기도"
+        },
+        run : function() {
+            console.log(this.name + " 뛴다");
+        }
+    };
+
+    jr.name = "abc";
+    jr.run();
+
+    //IIEF
+    (function smaple() {
+        console.log("HIHI");
+    })();
+
+    //ES5 객체
+    var Sample2 = (function(){
+        //생성자
+        this.fName;
+        this.Lname;
+        function Sample2(fName, Lname) {
+            this.fName = fName;
+            this.Lname = Lname;
+        }
+        //메서드 선언
+        Sample2.prototype.fullName = function() {
+            console.log(this.fName + this.Lname);
+        }
+
+        return Sample2;
+    })();
+
+    var hong = new Sample2("홍","길동");
+    var gil = new Sample2("홍","길순");
+
+    hong.fullName();
+    gil.fullName();
+    
+    
+    //ES6 객체
+    class Sample3 {
+        constructor (age, name) {
+            this.age = age;
+            this.name = name;
+        }
+        speak () {
+            console.log(this.age + name);
+            console.log(`탬플릿 string ${this.age}`);
+        }
+    }
+
+    const ku = new Sample3("25", "ku");
+    ku.speak();
+    var html;
+    html = `
+        <ul>
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+        </ul>`;
+    document.getElementById("root").innerHTML = html;
+    document.querySelector("#root").innerHTML = html;
+</script>

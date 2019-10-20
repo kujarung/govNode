@@ -1,0 +1,88 @@
+<script>
+    const log = console.log;
+    // 반복문 ES6
+    const str = [];
+    str.push("A");
+    str.push("B");
+    str.push("B");
+    str.push("B");
+    
+    //es5
+    for(var i=0; i<str.length; i++) {
+        log(i);
+    }
+
+    //index가 나옴
+    for(var i in str) {
+        log(i);
+        log(str[i]);
+    }
+
+    //es6 value가 나옴
+    for(var v of str) {
+        log(v);
+    }
+
+    //value, index, array자체
+    str.forEach(function(v, i, a) {
+        log(v + "  " +i + "  " + a);
+    });
+
+    var arr = [1,2,3,4,5];
+    
+    //map(); 배열 순회 후 "새로운" 배열을 리턴해줌
+    var arr2 = arr.map(function(v) {
+        return v*10;
+    });
+    log(arr);
+    log(arr2);
+
+    var arr3 = arr.filter(function(v){
+        return v <= 3;
+    });
+    log(arr3);
+
+    var result = {
+        student : [
+            {
+                name : "ku",
+                kor : 95,
+            },
+            {
+                name : "ja",
+                kor : 97,
+            },
+            {
+                name : "ru",
+                kor : 92,
+            },
+            
+
+        ],
+    }
+
+    var korOver = result.student.filter(function(v){
+        return v.kor >= 95;
+    })
+    log(korOver);
+
+    //ES6 Object
+    log( Object.entries(result.student) )
+
+
+    for( var [k,v] of  Object.entries(result.student[0])) {
+        log(k,v);
+    }
+
+    for( var [k,v] of  Object.entries(result.student)) {
+        log(k,v);
+    }
+
+    for( var k of  Object.keys(result.student[0])) {
+        log(k);
+    }
+
+    for( var v of  Object.values(result.student[0])) {
+        log(v);
+    }
+</script>

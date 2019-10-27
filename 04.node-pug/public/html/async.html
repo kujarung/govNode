@@ -1,0 +1,27 @@
+<script>
+	/* ES6에서 구현 된 문법 */
+
+	const users = [
+		{id: 1, name: "홍길동", age:25},
+		{id: 1, name: "홍길순", age:22},
+		{id: 1, name: "홍길만", age:21},
+	];
+
+	const findUser = async (name) => {
+		let result = await users.filter( item => item.name == name );
+		return result;
+	}
+
+	const findAge = async (id) => {
+		let result = await users.filter( item => item.id == id );
+		return result[0].age;
+	}
+
+	(async () => {
+		const result = await findUser("홍길동");
+		console.log(result);
+		const age = await findAge(result[0].id);
+		console.log( age )
+	})();
+	
+</script>

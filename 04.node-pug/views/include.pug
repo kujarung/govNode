@@ -1,0 +1,30 @@
+html
+	include ./inc/header.pug
+	body
+	include ./inc/nav.pug
+	.container
+		h1= `안녕하세요, PUG ${name} ${title}`
+		table.table.table-bordered
+			thead
+				tr
+					th 번호
+					th 이름
+					th 나이
+			tbody
+				each item in users
+					tr
+						if item.id == 1
+							td= item.id
+							td= item.name
+							td= item.age
+						else if item.id == 2
+							td= item.id
+							td= item.name
+							td= item.age
+				-for(var i=0; i<users.length; i++) {
+					tr
+						td= users[i].id
+						td= users[i].name
+						td= users[i].age
+				-}	
+	include ./inc/footer.pug

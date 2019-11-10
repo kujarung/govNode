@@ -3,16 +3,13 @@
 html(lang="en")
     include ../inc/header.pug
     body
-        //- mt, mb, ml, mr, mx, my, pt,pb, pl, pr, px, py
-        //- bootstrap: 기본폰트 사이즈:16px= 1rem / -1(0.25rem, 4px), -2(0.5rem, 8px)
-        //- -3(1rem, 16px), -4(1.5rem, 24px), -5(2rem, 32px), -auto
         include ../inc/nav.pug
         .container
             .jumbotron.mb-3.my-3
                 h1= tit
-                    span -
+                    span.mr-3.ml-3 -
                     small= subTit
-            form(name= "sendFrom" action="/user/save" method="post" )
+            form(name= "sendFrom" action="/user/update" method="post" )
                 table.table.table-bordered.table-hover
                     thead.thead-dark
                         tr
@@ -22,12 +19,13 @@ html(lang="en")
                         tr
                             td 이름
                             td
-                                input(type='text' name='username' class='form-control')
+                                input(type="hidden" name="id" value=`${datas.id}`)
+                                input(type='text' name='username' class='form-control' value=`${datas.username}`)
                         tr 
                             td 나이
                             td
-                                input(type="number" name='age' class='form-control')
+                                input(type="number" name='age' class='form-control' value=`${datas.age}`)
                         tr.tc
                             td(colspan="2")
-                                button.btn.btn-primary(type='submit') 저장
+                                button.btn.btn-primary(type='submit') 수정
                                 button.btn.btn-danger(type='reset') 다시 작성

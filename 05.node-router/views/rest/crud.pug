@@ -1,0 +1,32 @@
+extends ../layout/rest-layout.pug
+block titleBar
+    .jumbotron.my-3
+block content
+    h1 RESTFul 테스트
+    .border.my-3.p-3
+        h2 Create
+        form.form-inline(action="/rest" method="post")
+            input.form-control(type="text" name="username")
+            button.btn.btn-primary.ml-1 전송
+    form#revForm(method="post" action="/rest")
+        input(type="hidden" name="_method" value="delete")
+        input(type="hidden" name="id" id="rev-id" value="")
+    .border.my-3.p-3
+        h2 Update
+        form.form-inline(action="/rest" method="post")
+            input#username.form-control(type="text" name="username")
+            input(type="hidden" name="_method" value="put")
+            input(type="hidden" name="id" value="" id="id")
+            button.btn.btn-primary.ml-1 전송
+    .border.my-3.p-3
+        h2 Read
+        .border.d-flex.flex-wrap
+            each items in datas
+                .p-2.d-flex.align-items-center.rounded.border.m-3
+                    span.mr-3.user-id= items.id
+                    span.mr-3.user-name= items.username
+                    div
+                        button.btn.btn-success.btn-sm(onclick="changData(this);") 수정
+                        button.btn.btn-danger.btn-sm(onclick="revDate(this);") 삭제
+block script
+    script(src="/js/script.js")                     

@@ -4,7 +4,7 @@ const {alertLoc} = require(path.join(__dirname, "../moduls/util-loc") );
 const {sqlExec, ...db} = require(path.join(__dirname, "../moduls/mysql-conn") );
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
     (async () => {
         let = sql = "SELECT * FROM rest";
         const result = await sqlExec(sql);
@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
 
 });
 
-router.put("/", (req, res) => {
+router.put("/", (req, res, next) => {
     let userid = req.body.id;
     let username = req.body.username;
     (async ()=> {
@@ -34,7 +34,7 @@ router.put("/", (req, res) => {
     })();
 });
 
-router.delete("/", (req, res) => {
+router.delete("/", (req, res, next) => {
     let id = req.body.id;
     (async ()=> {
         let sql = "DELETE FROM rest where id=" + id;
@@ -42,5 +42,9 @@ router.delete("/", (req, res) => {
         res.json(result[0]);
     })()
 });
+
+router.get("/err", (req, res, next) => {
+    throw new Error("Error!!!");
+})
 
 module.exports = router;

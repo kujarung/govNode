@@ -1,0 +1,33 @@
+extends ./layout/rest-layout.pug
+block titleBar
+    .jumbotron.my-3
+        h1 RESTFul 테스트
+block content
+    .border.my-3.p-3
+        h2 Create
+        form.form-inline(action="/user/post" method="post")
+            input.form-control(type="text" name="username")
+            button.btn.btn-primary.ml-1 전송
+    .border.my-3.p-3
+        h2 Update
+        form.form-inline(action="/user/put" method="post" name="upForm")
+            input#username.form-control(type="text" name="username" )
+            input(type="hidden" name="_method" value="put")
+            input(type="hidden" name="id" value="" id="id")
+            button.btn.btn-primary.ml-1 전송
+    .border.my-3.p-3
+        h2 Read
+        .border.d-flex.flex-wrap
+            each user in result
+                .p-2.d-flex.align-items-center.rounded.border.m-3
+                    span.mr-3.user-id= user.id
+                    span.mr-3.user-name= user.username
+                    div
+                        button.btn.btn-success.btn-sm(onclick="changData(" + user.id +", '" +user.username + "');") 수정
+                        form(action="/user/delete" style="display: inline-block; margin-block-end: 0;")
+                            input(type="hidden" name="del_id" value= user.id  id="id")
+                            input(type="hidden" name="_method" value="delete")
+                            button.btn.btn-danger.btn-sm(type="submit") 삭제
+
+block script
+    script(src="/js/script-ajax-seq.js")     

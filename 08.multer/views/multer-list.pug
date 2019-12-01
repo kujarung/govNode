@@ -1,0 +1,16 @@
+extends ./layout/multer.pug
+
+block title
+    .jumbotron 
+        h1 Multer를 알아 보자
+
+block content
+    .my-3.py-3
+        form(action="/multer" method="post" enctype="multipart/form-data")
+            div
+                input(type="text" name="title" class="form-control" placeholder="제목을 입력하세요.")
+            div
+                input(type="file" name="img" class="form-control-file")
+            div
+            .text-center.py-2
+                button.btn.btn-primary 저장

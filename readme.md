@@ -7,20 +7,24 @@
 
 ## 2주차
 ### express,pug 등 기본적인 node 문법
-### router,
+### promise, async, await을 문법
 
 ## 3주차
 ### Mysql, Sequalize 등을 이용한 db 연결
 ### 기본 쿼리 학습과 데이터 삽입 업데이트 등 crud
 
 ## 4주차
+### Mysql2를 이용한 aync, await
 ### crud 심화
+### route를 이용한 경로 설정
 
 ## 5주차
 ### crud 심화
+### rest api 학습
 
 ## 6주차
 ### node 기본 내장 모듈(os,path.......)
+### 클러스터 및 cpyto
 
 ## 7주차
 ### multer
@@ -28,6 +32,7 @@
 ### Session과 cypto를 이용한 로그인 및 회원가입
 
 ## 8주차
+### mongoDb
 ### 
 
 ## 9주차

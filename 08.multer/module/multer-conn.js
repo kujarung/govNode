@@ -1,5 +1,3 @@
-var express = require('express');
-var router = express.Router();
 
 var express = require('express');
 var multer  = require('multer');
@@ -16,20 +14,7 @@ var storage = multer.diskStorage({
   }
 })
 
-var allowExt = [".jpg" , ".png", ".jpeg", ".gif", ".zip", ".pdf"]
-var chkFile = (req, f, cb) => {
-    var ext = path.extname(f.originalname).toLowerCase();
-    console.log(ext);
-    if(allowExt.indexOf(ext) > -1 ) {
-        req.isFileValidate = true;
-        cb(null, true);
-    } else {
-        req.isFileValidate = false;
-        cb(null, false);
-    }
-};
-
-var upload = multer({ storage: storage, fileFilter: chkFile})
+var upload = multer({ storage: storage, fileFilter: chkFile })
 
 function getPath() {
   var newPath = path.join(__dirname, "../public/uploads/" + makePath() );
@@ -57,16 +42,3 @@ function getFile(oriFile) {
   return year + month;
 }
 
-
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  console.log("여기예요.")
-  res.render('multer-list', { title: 'Express' });
-});
-
-router.post("/", upload.single('img'), (req, res, next) => {
-  if(req.isFileValidate) res.send("저장 되었습니다." + req.file.filename);
-  else res.send("파일 저장에 실패하였습니다.")
-})
-module.exports = router;

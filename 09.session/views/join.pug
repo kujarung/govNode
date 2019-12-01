@@ -1,0 +1,21 @@
+extends ./layout/def.pug
+
+block title
+    div.jumbotron
+        h1 회원가입
+block content
+    div.my-3.p-3.border.rounded.d-flex.justify-content-center.align-items-center
+        form(action="/users/login" method="post")
+            h2.text-center 회원가입
+            div.py-2(style="width:300px;")
+                span 아이디
+                input.form-control(type="text" name="userid")
+            div.py-2(style="width:300px;")
+                span 패스워드
+                input.form-control(type="password" name="userpw")
+            div.py-2(style="width:300px;")
+                span 이름
+                input.form-control(type="password" name="username")
+            .py-2().text-center
+                button.btn.btn-primary.mr-3 가입
+                button.btn.btn-danger(type="reset") 다시작성

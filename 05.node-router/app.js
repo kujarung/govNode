@@ -38,6 +38,7 @@ app.locals.pretty = true;
 
 /* morgan setting */
 const logDirectory = path.join(__dirname, 'log');
+
 // ensure log directory exists
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 var accessLogStream = rfs('access.log', {
